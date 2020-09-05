@@ -4,7 +4,8 @@ const bodyParser=require('body-parser');
 const mongoose=require('mongoose');
 
 //routes
-const userRoutes=require('./routes/user');
+const userRoutes=require('./routes/authRouter');
+const adminRoutes=require('./routes/admin/authAdminRouter');
 const app=express();
 env.config();
 mongoose.connect(
@@ -20,6 +21,7 @@ mongoose.connect(
 
 app.use(bodyParser());
 app.use('/api',userRoutes);
+app.use('/api',adminRoutes);
 
 app.listen(process.env.PORT,()=>{
     console.log(`server is running on port ${process.env.PORT}`)

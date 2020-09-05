@@ -17,6 +17,7 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
-    "bcrypt": "^5.0.0"
+    "bcrypt": "^5.0.0",
+    "jsonwebtoken": "^8.5.1"
   }
 }
