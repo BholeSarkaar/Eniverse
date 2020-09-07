@@ -70,11 +70,6 @@ exports.signin=(req,res)=>{
         username:Math.random().toString()
     });
     _user.save((error,data)=>{
-           if(error){
-               return res.status(400).json({
-                   message:"Something went wrong!"
-               });
-           }
            if(data){
                return res.status(201).json({
                    message:"user created successfully..!"
@@ -84,10 +79,4 @@ exports.signin=(req,res)=>{
 })
 }
 
-exports.requireSignIn=(req,res,next)=>{
-    const token=req.headers.authorization.split(" ")[1];
-    const user=jwt.verify(token,process.env.JWT_SECRET);
-    req.user =user;
-    next();
-}
 

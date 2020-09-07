@@ -41,7 +41,7 @@ exports.signin=(req,res)=>{
     if(err) return res.status(400).json({error});
     if(user){
         if(user.authenticate(req.body.password) && user.role==="admin"){
-            const token=jwt.sign({_id:user._id},process.env.JWT_SECRET,
+            const token=jwt.sign({_id:user._id,role:user.role},process.env.JWT_SECRET,
                 {expiresIn:'1h'}
             );
             const {_id,firstname,lastname,role,fullname,email}=user;
@@ -69,11 +69,6 @@ exports.signin=(req,res)=>{
         username:Math.random().toString()
     });
     _user.save((error,data)=>{
-           if(error){
-               return res.status(400).json({
-                   message:"Something went wrong!"
-               });
-           }
            if(data){
                return res.status(201).json({
                    message:"Admin created successfully..!"
@@ -83,10 +78,5 @@ exports.signin=(req,res)=>{
 })
 }
 
-exports.requireSignIn=(req,res,next)=>{
-    const token=req.headers.authorization.split(" ")[1];
-    const user=jwt.verify(token,process.env.JWT_SECRET);
-    req.user =user;
-    next();
-}
+
 
