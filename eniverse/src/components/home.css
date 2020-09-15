@@ -1,3 +1,17 @@
 .jumbo{
     font-family: 'Kanit', sans-serif;
 }
+.sidebar{
+    position: fixed;
+    top:0;
+    height: 100%;
+    left: 0;
+    bottom:0;
+    background-color: #eee;
+}
+.cont{
+    margin-left: auto;
+}
+#Navbar{
+    z-index: 1;
+}

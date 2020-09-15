@@ -1,13 +1,14 @@
-import React from 'react'
-import { Jumbotron, Container } from 'react-bootstrap'
-
+import React from 'react';
+import {Container,Row,Col } from 'react-bootstrap';
+import './home.css';
 export default function Home() {
     return (
         <div>
-            <Container>
-            <Jumbotron className="jumbo text-center bg-white">
-                <h1>Welcome to Admin Dashboard</h1>
-            </Jumbotron>
+            <Container fluid>
+                <Row>
+                    <Col md={2} sm={6} className="h-100">Sidebar</Col>
+                    <Col md={10} sm={6} className="cont">Container</Col>
+                </Row>
             </Container>
         </div>
     )
